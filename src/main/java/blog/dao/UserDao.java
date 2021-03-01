@@ -1,7 +1,10 @@
 package blog.dao;
 
-import blog.model.User;
+import org.apache.ibatis.annotations.Mapper;
 
+import blog.entity.User;
+
+@Mapper
 public interface UserDao {
 
 	/**
@@ -21,5 +24,19 @@ public interface UserDao {
 	 * @return
 	 */
 	User login(String username, String password);
+	
+	
+    /**获取用户信息
+     * @param id
+     * @return
+     */
+    public User get(String id);
+    
 
+    /**获取用户信息
+     * @param id
+     * @return
+     */
+    public User get(User user);
+ 
 }

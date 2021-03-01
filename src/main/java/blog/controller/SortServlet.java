@@ -1,4 +1,4 @@
-package blog.servlet;
+package blog.controller;
 
 import java.io.IOException;
 import java.net.URLDecoder;

@@ -11,9 +11,8 @@ import java.util.List;
 import java.util.Map;
 
 import blog.dao.ArticleDao;
-import blog.db.C3P0Connection;
-import blog.model.Article;
-import blog.model.Comment;
+import blog.entity.Article;
+import blog.entity.Comment;
 import blog.utils.DBUtils;
 
 /*
@@ -25,9 +24,7 @@ public class ArticleDaoImpl implements ArticleDao {
 	private Connection conn;
 	private static ArticleDao instance;
 
-	private ArticleDaoImpl() {
-		conn = C3P0Connection.getInstance().getConnection();
-	}
+
 
 	public static final ArticleDao getInstance() {
 		if (instance == null) {

@@ -12,8 +12,8 @@ import org.apache.commons.beanutils.BeanUtils;
 
 import blog.dao.TagDao;
 import blog.dao.UserDao;
-import blog.db.C3P0Connection;
-import blog.model.User;
+
+import blog.entity.User;
 import blog.utils.DBUtils;
 
 /**
@@ -24,9 +24,6 @@ public class UserDaoImpl implements UserDao {
 
 	private Connection conn;
 
-	private UserDaoImpl() {
-		conn = C3P0Connection.getInstance().getConnection();
-	}
 
 	private static UserDao instance;
 
@@ -88,5 +85,17 @@ public class UserDaoImpl implements UserDao {
 			e.printStackTrace();
 		}
 		return user;
+	}
+
+	@Override
+	public User get(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public User get(User user) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

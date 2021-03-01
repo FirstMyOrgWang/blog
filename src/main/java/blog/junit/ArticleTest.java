@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import blog.dao.ArticleDao;
 import blog.daoImpl.ArticleDaoImpl;
-import blog.model.Article;
+import blog.entity.Article;
 
 public class ArticleTest {
 

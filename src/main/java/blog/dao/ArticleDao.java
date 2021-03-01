@@ -3,7 +3,7 @@ package blog.dao;
 import java.util.List;
 import java.util.Map;
 
-import blog.model.Article;
+import blog.entity.Article;
 
 public interface ArticleDao {
 

@@ -1,4 +1,4 @@
-package blog.model;
+package blog.entity;
 
 import java.text.ParseException;
 import java.util.Date;

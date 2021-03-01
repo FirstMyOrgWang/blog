@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import blog.model.Comment;
+import blog.entity.Comment;
 import blog.service.ArticleService;
 import blog.service.CommentService;
 import net.sf.json.JSONObject;

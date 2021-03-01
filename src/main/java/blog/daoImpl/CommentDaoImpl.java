@@ -9,17 +9,15 @@ import java.util.Collections;
 import java.util.List;
 
 import blog.dao.CommentDao;
-import blog.db.C3P0Connection;
-import blog.model.Comment;
+
+import blog.entity.Comment;
 import blog.utils.DBUtils;
 
 public class CommentDaoImpl implements CommentDao {
 
 	private Connection conn;
 
-	private CommentDaoImpl() {
-		conn = C3P0Connection.getInstance().getConnection();
-	}
+
 
 	private static CommentDao instance;
 
@@ -90,7 +88,7 @@ public class CommentDaoImpl implements CommentDao {
 	@Override
 	public boolean addComment(Comment comment) {
 
-		Connection conn = C3P0Connection.getInstance().getConnection();
+		
 		String sql = "INSERT  INTO blog_comment VALUES(null,?,?,?,?,?,?)";
 		int result = 0;
 		try {

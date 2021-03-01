@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans.xsd 
+       http://www.springframework.org/schema/context 
+       http://www.springframework.org/schema/context/spring-context.xsd 
+       http://www.springframework.org/schema/aop 
+       http://www.springframework.org/schema/aop/spring-aop.xsd 
+       http://www.springframework.org/schema/tx 
+       http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+
+  
+	<context:component-scan base-package="blog.*"/>
+	<!-- 引入jdbc配置文件-->
+	 <context:property-placeholder location="classpath:conf/jdbc-db.properties" /> 
+	<!-- 数据库配置 -->
+	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
+		<property value="${jdbc.drvier}" name="driverClassName"/>
+		<property value="${jdbc.url}" name="url"/>
+		<property value="${jdbc.username}" name="username"/>
+		<property value="${jdbc.password}" name="password"/>
+	</bean>
+
+	<!-- mybatis配置 classpath 和 classpath* 区别： classpath：只会到你的class路径（WEB-INF/classes）中查找找文件;
+	classpath*：不仅包含class路径，还包括jar文件中进行查找.classpath的使用：当项目中有多个classpath路径，
+	并同时加载多个classpath路径下（此种情况多数不会遇到）的文件，就发挥了作用，如果不加*，则表示仅仅加载第一个classpath路径。
+	另外： "/" 表示的是任意目录； "/applicationContext-.xml" 表示任意目录下的以"applicationContext-"开头的XML文件。
+	程序部署到tomcat后，src目录下的配置文件会和class文件一样，自动copy到应用的 WEB-INF/classes目录下 classpath:与classpath:的区别在于，
+	前者只会从第一个classpath中加载，而后者会从所有的classpath中加载如果要加载的资源，
+	不在当前ClassLoader的路径里，那么用classpath:前缀是找不到的，这种情况下就需要使用classpath*:前缀在多个classpath中存在同名资源，都需要加载，
+	那么用classpath:只会加载第一个，这种情况下也需要用classpath*:前缀注意：用classpath:需要遍历所有的classpath，所以加载速度是很慢的，
+	因此，在规划的时候，应该尽可能规划好资源文件所在的路径，尽量避免使用classpath。 lib包和classes文件夹都是classpath，优先级lib》classes文件夹-->
+	<bean class="org.mybatis.spring.SqlSessionFactoryBean">
+	 <!-- 加载mybatis-config配置文件，里面设置别名 -->
+        <property name="configLocation" value="classpath:conf/mybatis-config.xml"/>
+        <!-- 数据库配置 -->
+		<property name="dataSource" ref="dataSource"/>
+		<!-- 扫描当前包下的实体类，用简单类名作为全类名的别名，这样就可以在mapper.xml的sql映射文件中使用该别名，如标签type和resultType值可以进行缩写，即不用写成完整类名，直接写简单类名即可 -->
+		<property value="blog.entity" name="typeAliasesPackage"/>
+		<!-- 映射文件位置 -->
+		<property value="classpath:mapper/*Dao.xml" name="mapperLocations"/>
+	</bean>
+
+	<!-- 映射配置器，自动创建dao的实现类对象 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property value="blog.dao" name="basePackage"/>
+	</bean>
+
+	<!-- 事务管理器-->
+	<bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="transactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+
+	<!-- 开启事务注解，使用@transaction(readonly='true'是否只读，默认true)注解，使用此注解之后事务管理器会进行事务管理-->
+	<tx:annotation-driven />
+
+</beans>

@@ -9,8 +9,8 @@ import java.util.List;
 
 import blog.dao.ArticleDao;
 import blog.dao.TagDao;
-import blog.db.C3P0Connection;
-import blog.model.Tag;
+
+import blog.entity.Tag;
 import blog.utils.DBUtils;
 
 /**
@@ -22,9 +22,7 @@ public class TagDaoImpl implements TagDao {
 
 	private static TagDao instance;
 
-	private TagDaoImpl() {
-		conn = C3P0Connection.getInstance().getConnection();
-	}
+
 
 	public static final TagDao getInstance() {
 		if (instance == null) {

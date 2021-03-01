@@ -1,4 +1,4 @@
-package blog.servlet;
+package blog.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import blog.db.VisitorDB;
+
 import blog.service.ArticleService;
 import blog.service.TagService;
 
@@ -25,9 +25,6 @@ public class AdminServlet extends HttpServlet {
 		// 传所有的标签
 		TagService ts = TagService.getInstance();
 		request.setAttribute("tags", ts.getAllTag());
-		// 传网站的统计数据
-		request.setAttribute("visited", VisitorDB.totalVisit());
-		request.setAttribute("member", VisitorDB.totalMember());
 
 		// 转发
 		request.getRequestDispatcher("/admin/admin.jsp").forward(request, response);

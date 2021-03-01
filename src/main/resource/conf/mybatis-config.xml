@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--开启自动驼峰命名规则映射 
+      在数据库字段命名规范中，通常使用下划线“_”来连接两个单词，比如：user_type。但是在Java开发中，实体字段通常采用驼峰命名法，因此会在mapper文件的SQL语句中使用 "AS"设置别名来匹配实体。例子：select user_type as userType from t_user
+      Mybatis 在 settings 配置项中有一个 mapUnderscoreToCamelCase 参数，设置为True即可开启自动驼峰命名规则映射，即从经典数据库列名 A_COLUMN 到经典 Java 属性名 aColumn 的类似映射，默认为False。
+      SQL语句即可省略"AS"别名的添加，列子：select user_type from t_user
+     -->
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="logImpl" value="log4j"/>
+    </settings>
+
+    <!--插件 分页-->
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageHelper">
+            <property name="dialect" value="mysql"></property>
+        </plugin>
+    </plugins>
+
+</configuration>

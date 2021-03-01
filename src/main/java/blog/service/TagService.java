@@ -8,8 +8,8 @@ import java.util.Map;
 
 import blog.dao.TagDao;
 import blog.daoImpl.TagDaoImpl;
-import blog.model.Article;
-import blog.model.Tag;
+import blog.entity.Article;
+import blog.entity.Tag;
 import blog.utils.ArticleUtils;
 import blog.utils.StringUtils;
 

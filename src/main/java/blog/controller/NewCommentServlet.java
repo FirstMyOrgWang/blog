@@ -1,4 +1,4 @@
-package blog.servlet;
+package blog.controller;
 
 import java.io.IOException;
 import java.util.Date;
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import blog.model.Comment;
+import blog.entity.Comment;
 import blog.service.CommentService;
 import blog.utils.DateUtils;
 import blog.utils.FailException;

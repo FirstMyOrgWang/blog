@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import blog.dao.UserDao;
 import blog.daoImpl.UserDaoImpl;
-import blog.model.User;
+import blog.entity.User;
 
 public class UserTest {
 
@@ -21,9 +21,9 @@ public class UserTest {
 		UserDao userDao = UserDaoImpl.getInstance();
 		User user = userDao.login(name, password);
 		if (user != null) {
-			System.out.println(user.getUser_id());
-			System.out.println(user.getUser_name());
-			System.out.println(user.getUser_password());
+			System.out.println(user.getUserId());
+			System.out.println(user.getUserName());
+			System.out.println(user.getUserPassword());
 		} else {
 			System.out.println("Login failed");
 		}

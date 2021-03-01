@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.beanutils.BeanUtils;
 
-import blog.model.Article;
-import blog.model.Comment;
+import blog.entity.Article;
+import blog.entity.Comment;
 
 public class Form2Bean {
 

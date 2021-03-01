@@ -11,8 +11,8 @@ import java.util.TreeMap;
 
 import blog.dao.ArticleDao;
 import blog.daoImpl.ArticleDaoImpl;
-import blog.model.Article;
-import blog.model.AxisArticle;
+import blog.entity.Article;
+import blog.entity.AxisArticle;
 import blog.utils.ArticleUtils;
 import blog.utils.StringUtils;
 

@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import blog.dao.CommentDao;
 import blog.daoImpl.CommentDaoImpl;
-import blog.model.Comment;
+import blog.entity.Comment;
 import blog.utils.DateUtils;
 
 public class CommentTest {

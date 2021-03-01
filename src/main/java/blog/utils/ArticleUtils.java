@@ -2,8 +2,8 @@ package blog.utils;
 
 import java.util.List;
 
-import blog.model.Article;
-import blog.model.AxisArticle;
+import blog.entity.Article;
+import blog.entity.AxisArticle;
 
 /**
  * 文章处理工具

@@ -1,4 +1,4 @@
-package blog.model;
+package blog.entity;
 
 public class Tag {
 

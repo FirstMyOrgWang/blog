@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import blog.dao.TagDao;
 import blog.daoImpl.TagDaoImpl;
-import blog.model.Tag;
+import blog.entity.Tag;
 
 public class TagTest {
 

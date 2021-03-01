@@ -4,7 +4,7 @@ import java.util.List;
 
 import blog.dao.CommentDao;
 import blog.daoImpl.CommentDaoImpl;
-import blog.model.Comment;
+import blog.entity.Comment;
 
 public class CommentService {
 

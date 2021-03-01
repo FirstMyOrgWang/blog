@@ -2,7 +2,7 @@ package blog.dao;
 
 import java.util.List;
 
-import blog.model.Comment;
+import blog.entity.Comment;
 
 public interface CommentDao {
 

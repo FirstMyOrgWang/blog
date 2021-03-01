@@ -1,4 +1,4 @@
-package blog.servlet;
+package blog.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -6,24 +6,60 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.jsp.tagext.Tag;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import blog.dao.ArticleDao;
 import blog.dao.UserDao;
 import blog.daoImpl.UserDaoImpl;
-import blog.db.VisitorDB;
-import blog.model.Article;
-import blog.model.User;
+import blog.entity.Article;
+import blog.entity.User;
 import blog.service.ArticleService;
 import blog.service.TagService;
+import blog.service.UserService;
 import blog.utils.LoginUtils;
 
+ 
 /**
+ * @description 登录
+ * 
+ * @author wry
+ * 
+ * @date 2021-02-04
+ * 
  * Login->index.jsp->init data
  */
-@WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+@Controller
+@RequestMapping(value="/login")
+public class LoginController{
+	private static final Logger logger = org.apache.log4j.Logger.getLogger(User.class);
+	@Autowired
+	private UserService userService;
 
+	@ModelAttribute
+	public User  init(String id) {
+	   User user =userService.get(id);
+	   if(user!=null) {
+		   return user;
+	   }
+		return new User();
+		  	
+	}
+	
+	
+	@RequestMapping(value={"list",""})
+	public String list(User user,HttpServletRequest request,HttpServletResponse response) {
+		 logger.debug("登录成功！");
+		 logger.info("登录成功！");
+		return "views/main";
+	}
+	
+	
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -46,9 +82,6 @@ public class LoginServlet extends HttpServlet {
 		// 阅读排行
 		request.setAttribute("visit_rank", as.getVisitRank());
 
-		// 传网站的统计数据
-		request.setAttribute("visited", VisitorDB.totalVisit());
-		request.setAttribute("member", VisitorDB.totalMember());
 
 		// 转发到 博客主页 界面
 		request.getRequestDispatcher("/WEB-INF/views/main.jsp").forward(request, response);

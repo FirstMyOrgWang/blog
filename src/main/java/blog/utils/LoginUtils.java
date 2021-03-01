@@ -5,7 +5,7 @@ import javax.servlet.http.HttpSession;
 
 import blog.dao.UserDao;
 import blog.daoImpl.UserDaoImpl;
-import blog.model.User;
+import blog.entity.User;
 
 public class LoginUtils {
 

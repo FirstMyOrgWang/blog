@@ -9,8 +9,7 @@ import blog.dao.ArticleDao;
 import blog.dao.TagDao;
 import blog.daoImpl.ArticleDaoImpl;
 import blog.daoImpl.TagDaoImpl;
-import blog.db.C3P0Connection;
-import blog.model.Article;
+import blog.entity.Article;
 import blog.utils.FailException;
 import blog.utils.Form2Bean;
 
