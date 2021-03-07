@@ -53,7 +53,7 @@ public class LoginController{
 	
 	@RequestMapping(value={"list",""})
 	public String list(User user,HttpServletRequest request,HttpServletResponse response) {
-		 logger.debug("登录成功！2");
+		 logger.debug("登录成功！222");
 		 logger.info("登录成功！2");
 		return "views/main";
 	}
